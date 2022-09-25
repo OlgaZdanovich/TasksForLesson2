@@ -1,26 +1,37 @@
+/**
+ * Тривиальная (1 балл)
+ * Найти длину отрезка, соединяющего точки на плоскости с координатами (x1, y1) и (x2, y2).
+ * Например, расстояние между (3, 0) и (0, 4) равно 5
+ */
 import java.util.Scanner;
 public class Script {
     public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
-        System.out.print("Введите время в формате: hh:mm:ss\n");
+        System.out.print("Введите координаты первой точки x,y через \",\"\n");
+        String InputStr1 = in.nextLine();
 
-        String InputStr = in.nextLine();
-        String[] words = InputStr.split(":");
-        String Hh = words[0];
-        String Mm = words[1];
-        String Ss = words[2];
 
-        int H = Integer.parseInt (Hh);
-        int M = Integer.parseInt (Mm);
-        int S = Integer.parseInt (Ss);
+        System.out.print("Введите координаты второй точки x,y через \",\"\n");
+        String InputStr2 = in.nextLine();
 
-        if(H>24|H<0|M>60|M<0|S>60|S<0) {
-            System.out.print("Конец программы. Выход за пределы допустимых значений.");
-        } else {
-            int Summa = (H*3600)+(M*60)+S;
-            System.out.printf("Время в секундах: %d\n",Summa);
-        }
+        String[] StrLine1 = InputStr1.split(",");
+        String x1Str = StrLine1[0];
+        String y1Str = StrLine1[1];
+
+        String[] StrLine2 = InputStr2.split(",");
+        String x2Str = StrLine2[0];
+        String y2Str = StrLine2[1];
+
+        double y1 = Double.parseDouble (y1Str);
+        double x1 = Double.parseDouble (x1Str);
+
+        double y2 = Double.parseDouble (y2Str);
+        double x2 = Double.parseDouble (x2Str);
+
+        double LengthAB = Math.sqrt(((x1-x2)*(x1-x2)) + ((y1-y2)*(y1-y2)));
+        System.out.printf("Расстояние между точками: %f\n",LengthAB);
+
         in.close();
     }
 }
